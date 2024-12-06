@@ -127,12 +127,17 @@ public class MyString {
      * @return a string consisting of str1 minus all the characters of str2
      */
     public static String remove(String str1, String str2) {
-
-        for (int i = 0; i < str1.length(); i++) {
-            int charIndex = str2.indexOf(str1.charAt(i));
-            str2 = str2.substring(0, charIndex) + str2.substring(charIndex + 1);
+        if (str2.isEmpty()) {
+            return str1;
         }
-        return str2;
+        if (str1.isEmpty()) {
+            return "";
+        }
+        for (int i = 0; i < str2.length(); i++) {
+            int charIndex = str1.indexOf(str2.charAt(i));
+            str1 = str1.substring(0, charIndex) + str1.substring(charIndex + 1);
+        }
+        return str1;
     }
 
     /**
